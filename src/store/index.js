@@ -1,18 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// 引入user模块
 import user from './user'
-
+import contacts from './contacts'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  // state: {
-  // },
-  // mutations: {
-  // },
-  // actions: {
-  // },
   modules: {
-    user
+    user,
+    contacts
   }
 })
