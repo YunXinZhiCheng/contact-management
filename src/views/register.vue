@@ -58,6 +58,7 @@ import { mapActions } from 'vuex'
 export default {
   data() {
     return {
+      // own 用户信息
       own: {
         name: '', // 用户名
         tel: '', // 电话
@@ -73,6 +74,7 @@ export default {
     }
   },
   methods: {
+    // 对应vuex里面的register
     ...mapActions(['register']),
     doRegister() {
       this.nameIn =
@@ -89,9 +91,9 @@ export default {
           this.icon = false
           this.result = true
           // 这个时候 就可以拿到 表单的值 去做操作
-
           this.register(this.own)
 
+          // 判断注册完成后
           if (sessionStorage.register && sessionStorage.register == 1) {
             this.req = true
             this.own.name = ''
