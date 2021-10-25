@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   data() {
     // 每个组件最最重要的就是data
@@ -42,6 +43,29 @@ export default {
       req: false,
     }
   },
+  methods: {
+    ...mapActions(['signIn']),
+    login(){
+      this.icon = true
+      this.req = false
+      setTimeout(()=>{
+        // 这一部分在Vuex里面完成
+        this.signIn({
+          name: this.name,
+          psw: this.psw
+        })
+
+        // 判断登录成功后，路由跳转到通讯录首页
+         if (sessionStorage.login && sessionStorage.login == 1) {
+          this.$router.replace("/contacts/index");
+          this.icon = false;
+        } else {
+          // 登录失败
+          this.icon = true;
+        }
+      },1000)
+    }
+  }
 }
 </script>
 
